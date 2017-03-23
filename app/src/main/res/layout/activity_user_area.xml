@@ -8,50 +8,52 @@
     tools:context="net.redfrench.volleyauth.UserAreaActivity">
 
     <TextView
-        android:id="@+id/welcome"
+        android:id="@+id/tvWelcome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="18dp"
-        android:text="TextView"/>
+        android:layout_marginTop="17dp"
+        android:text="Welcome"/>
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/welcome"
-        android:layout_alignRight="@+id/welcome"
-        android:layout_below="@+id/welcome"
-        android:layout_marginTop="17dp"
-        android:text="Username"/>
+        android:text="Username"
+        android:layout_below="@+id/tvWelcome"
+        android:layout_alignLeft="@+id/tvWelcome"
+        android:layout_alignStart="@+id/tvWelcome"
+        android:layout_marginTop="30dp"/>
 
     <EditText
-        android:id="@+id/username"
+        android:id="@+id/etUsername"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
         android:layout_below="@+id/textView2"
         android:layout_centerHorizontal="true"
-        android:ems="10"
-        android:inputType="textPersonName"/>
+        android:layout_marginTop="12dp"/>
 
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="21dp"
+        android:layout_marginTop="36dp"
         android:text="Age"
-        android:layout_below="@+id/username"
+        android:layout_below="@+id/etUsername"
         android:layout_centerHorizontal="true"/>
 
     <EditText
-        android:id="@+id/age"
+        android:id="@+id/etAge"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/username"
-        android:layout_alignRight="@+id/username"
-        android:layout_below="@+id/textView3"
         android:ems="10"
-        android:inputType="number"/>
+        android:inputType="number"
+        android:layout_marginTop="13dp"
+        android:layout_below="@+id/textView3"
+        android:layout_alignLeft="@+id/etUsername"
+        android:layout_alignStart="@+id/etUsername"/>
 
 </RelativeLayout>

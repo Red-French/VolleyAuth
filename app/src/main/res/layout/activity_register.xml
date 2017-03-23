@@ -8,7 +8,7 @@
     tools:context="net.redfrench.volleyauth.RegisterActivity">
 
     <EditText
-        android:id="@+id/name"
+        android:id="@+id/etName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -20,41 +20,40 @@
         />
 
     <EditText
-        android:id="@+id/username"
+        android:id="@+id/etUsername"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/name"
-        android:layout_alignStart="@+id/name"
-        android:layout_below="@+id/name"
         android:ems="10"
         android:hint="Username"
         android:inputType="textPersonName"
-        />
+        android:layout_below="@+id/etName"
+        android:layout_alignLeft="@+id/etName"
+        android:layout_alignStart="@+id/etName"/>
 
     <EditText
-        android:id="@+id/password"
+        android:id="@+id/etPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/username"
-        android:layout_alignStart="@+id/username"
-        android:layout_below="@+id/username"
         android:ems="10"
         android:hint="Password"
-        android:inputType="textPassword"/>
+        android:inputType="textPassword"
+        android:layout_above="@+id/etAge"
+        android:layout_alignLeft="@+id/etAge"
+        android:layout_alignStart="@+id/etAge"/>
 
     <EditText
-        android:id="@+id/age"
+        android:id="@+id/etAge"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/password"
-        android:layout_alignRight="@+id/password"
-        android:layout_below="@+id/password"
         android:ems="10"
         android:hint="Age"
-        android:inputType="number"/>
+        android:inputType="number"
+        android:layout_above="@+id/btnRegister"
+        android:layout_alignLeft="@+id/etName"
+        android:layout_alignStart="@+id/etName"/>
 
     <Button
-        android:id="@+id/register"
+        android:id="@+id/btnRegister"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
