@@ -15,5 +15,5 @@
     $response = array();
     $response["success"] = true;
 
-    echo json_encode($response);
+    echo json_encode($response);  // gets turn into JSONobject in RegisterActivity.java
 ?>
