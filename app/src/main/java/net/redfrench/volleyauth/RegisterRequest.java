@@ -6,21 +6,30 @@ import com.android.volley.toolbox.StringRequest;
 import java.util.HashMap;
 import java.util.Map;
 
-public class RegisterRequest extends StringRequest{  // this class will allow a request to be made to the Register.php file on the server and get a response as a string
+// this class will allow a request to be made to the Register.php file on the server
+// and get a response as a string, which is why StringRequest is being extended
+public class RegisterRequest extends StringRequest{
     private static final String REGISTER_REQUEST_URL = "http://myunclefatty.000webhostapp.com/Register.php";
     private Map<String, String> params;
 
+    // constructor (first method that runs when an instance of this class is created)
     public RegisterRequest(String name, String username, int age, String password, Response.Listener<String> listener) {
+
+        // pass data to Volley (below explains parameters of super())
+            // 1. Method.POST sends data to REGISTER_REQUEST_URL
+            // 2. REGISTER_REQUEST_URL returns data
+            // 3. listener: when Volley is finished with the request, it will inform the listener
+            // 4. null: error handling would be here
         super(Method.POST, REGISTER_REQUEST_URL, listener, null);
-        params = new HashMap<>();
-        params.put("name", name);
+        params = new HashMap<>();  // create HashMap
+        params.put("name", name);  // put data into HashMap
         params.put("username", username);
         params.put("password", password);
-        params.put("age", age + "");
+        params.put("age", age + "");  // add empty string to convert this from integer to string
     }
 
     @Override
     public Map<String, String> getParams() {  // when the request is executed, Volley will call getParams()
-        return params;  // returns params (declared above)
+        return params;  // returns params declared above
     }
 }

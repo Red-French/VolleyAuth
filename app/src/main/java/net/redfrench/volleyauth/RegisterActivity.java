@@ -40,24 +40,21 @@ public class RegisterActivity extends AppCompatActivity {
 
                 Response.Listener<String> responseListener = new Response.Listener<String>() {
 
+                    // below happens when response has been executed
                     @Override
-                    public void onResponse(String response) {  // this happens when the response has been executed
+                    public void onResponse(String response) {  // this is the response from Register.php
                         try {
-                            JSONObject jsonResponse = new JSONObject(response);
-                            boolean success = jsonResponse.getBoolean("success");
-                            Log.v("LOG", "You are here.");
+                            JSONObject jsonResponse = new JSONObject(response);  // gets 'response' string Volley has given back; 'response' was encoded into JSON string in Register.php
+                            boolean success = jsonResponse.getBoolean("success");  // 'success' given a boolean value in Register.php
                             if(success) {
-                                Log.v("LOG", "success!");
                                 Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
-//                                RegisterActivity.this.startActivity(intent);
-                                startActivity(intent);
+                                startActivity(intent);  // go to login page
                             } else {
-                                Log.v("LOG", "failure");
                                 AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this);
                                 builder.setMessage("Registration failed")
                                         .setNegativeButton("Retry", null)
                                         .create()
-                                        .show();
+                                        .show();  // display error
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
