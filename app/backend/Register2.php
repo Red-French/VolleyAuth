@@ -4,15 +4,15 @@
     $connect = mysqli_connect("localhost", "id1157462_myunclefatty", "000webhost2017", "id1157462_authentication");
 
     $name = $_POST["name"];
-    $age = $_POST["age"];
     $username = $_POST["username"];
     $password = $_POST["password"];
+    $age = $_POST["age"];
 
      function registerUser() {
-        global $connect, $name, $age, $username, $password;
+        global $connect, $name, $username, $password, $age;
         $passwordHash = password_hash($password, PASSWORD_DEFAULT);
-        $statement = mysqli_prepare($connect, "INSERT INTO user (name, age, username, password) VALUES (?, ?, ?, ?)");
-        mysqli_stmt_bind_param($statement, "siss", $name, $age, $username, $passwordHash);
+        $statement = mysqli_prepare($connect, "INSERT INTO user (name, username, password, age) VALUES (?, ?, ?, ?)");
+        mysqli_stmt_bind_param($statement, "sssi", $name, $username, $passwordHash, $age);
         mysqli_stmt_execute($statement);
         mysqli_stmt_close($statement);
     }
