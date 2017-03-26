@@ -23,38 +23,38 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        final EditText etAge = (EditText) findViewById(R.id.etAge);
         final EditText etName = (EditText) findViewById(R.id.etName);
         final EditText etUsername = (EditText) findViewById(R.id.etUsername);
         final EditText etPassword = (EditText) findViewById(R.id.etPassword);
+        final EditText etAge = (EditText) findViewById(R.id.etAge);
         final Button btnRegister = (Button) findViewById(R.id.btnRegister);
 
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.v("LOG", "hello");
+
                 final String name = etName.getText().toString();
                 final String username = etUsername.getText().toString();
                 final String password = etPassword.getText().toString();
                 final int age = Integer.parseInt(etAge.getText().toString());
 
-                Response.Listener<String> responseListener = new Response.Listener<String>() {
+                final Response.Listener<String> responseListener = new Response.Listener<String>() {
 
                     // below happens when response has been executed
                     @Override
-                    public void onResponse(String response) {  // this is the response from Register.php
+                    public void onResponse(String response) {  // 'response' is the boolean response from Register.php
                         try {
                             JSONObject jsonResponse = new JSONObject(response);  // gets 'response' string Volley has given back; 'response' was encoded into JSON string in Register.php
                             boolean success = jsonResponse.getBoolean("success");  // 'success' given a boolean value in Register.php
                             if(success) {
                                 Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
-                                startActivity(intent);  // go to login page
+                                startActivity(intent);
                             } else {
                                 AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this);
                                 builder.setMessage("Registration failed")
                                         .setNegativeButton("Retry", null)
                                         .create()
-                                        .show();  // display error
+                                        .show();
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -62,8 +62,9 @@ public class RegisterActivity extends AppCompatActivity {
                     }
                 };
 
-                RegisterRequest registerRequest = new RegisterRequest(name, username, age, password, responseListener);
+                RegisterRequest registerRequest = new RegisterRequest(name, username, password, age, responseListener);
                 RequestQueue queue = Volley.newRequestQueue(RegisterActivity.this);
+//                Log.v("registerRequest", String.valueOf(registerRequest));
                 queue.add(registerRequest);
             }
         });

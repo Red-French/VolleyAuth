@@ -1,5 +1,7 @@
 package net.redfrench.volleyauth;
 
+import android.util.Log;
+
 import com.android.volley.Response;
 import com.android.volley.toolbox.StringRequest;
 
@@ -13,7 +15,7 @@ public class RegisterRequest extends StringRequest{
     private Map<String, String> params;
 
     // constructor (first method that runs when an instance of this class is created)
-    public RegisterRequest(String name, String username, int age, String password, Response.Listener<String> listener) {
+    public RegisterRequest(String name, String username, String password, int age, Response.Listener<String> listener) {
 
         // pass data to Volley (below explains parameters of super())
             // 1. Method.POST sends data to REGISTER_REQUEST_URL
@@ -21,7 +23,7 @@ public class RegisterRequest extends StringRequest{
             // 3. listener: when Volley is finished with the request, it will inform the listener
             // 4. null: error handling would be here
         super(Method.POST, REGISTER_REQUEST_URL, listener, null);
-        params = new HashMap<>();  // create HashMap
+        params = new HashMap<>();
         params.put("name", name);  // put data into HashMap
         params.put("username", username);
         params.put("password", password);
@@ -29,7 +31,8 @@ public class RegisterRequest extends StringRequest{
     }
 
     @Override
-    public Map<String, String> getParams() {  // when the request is executed, Volley will call getParams()
+    public Map<String, String> getParams() {  // when request is executed, Volley will call getParams()
+        Log.v("line 35", String.valueOf(params));
         return params;  // returns params declared above
     }
 }
